@@ -17,7 +17,7 @@ class LikesCountUpdater
 
     protected function postCounts(Post $post)
     {
-        return $post->type === 'comment' && !$post->is_private;
+        return $post->user && $post->type === 'comment' && !$post->is_private;
     }
 
     public function liked(PostWasLiked $event)
