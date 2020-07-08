@@ -1,0 +1,38 @@
+{
+    "name": "clarkwinkelmann/flarum-ext-likes-received",
+    "description": "Shows the total number of likes received on a user profile",
+    "keywords": [
+        "flarum",
+        "likes"
+    ],
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": ">=0.1.0-beta.13 <0.1.0-beta.14",
+        "flarum/likes": "*"
+    },
+    "authors": [
+        {
+            "name": "Clark Winkelmann",
+            "email": "clark.winkelmann@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ClarkWinkelmann\\LikesReceived\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "Likes Received",
+            "icon": {
+                "name": "fas fa-thumbs-up",
+                "backgroundColor": "#684ba6",
+                "color": "#fff"
+            }
+        }
+    },
+    "minimum-stability": "beta",
+    "prefer-stable": true
+}
