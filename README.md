@@ -24,3 +24,4 @@ You can use this command after the installation to import existing likes count a
 
 - [GitHub](https://github.com/clarkwinkelmann/flarum-ext-likes-received)
 - [Packagist](https://packagist.org/packages/clarkwinkelmann/flarum-ext-likes-received)
+- [Discuss](https://discuss.flarum.org/d/24489)
