@@ -1,13 +1,13 @@
-import {extend} from 'flarum/extend';
+import {extend} from 'flarum/common/extend';
 import app from 'flarum/app';
-import UserCard from 'flarum/components/UserCard';
-import icon from 'flarum/helpers/icon';
+import UserCard from 'flarum/forum/components/UserCard';
+import icon from 'flarum/common/helpers/icon';
 
 /* global m */
 
 app.initializers.add('clarkwinkelmann-likes-received', () => {
     extend(UserCard.prototype, 'infoItems', function (items) {
-        const likes = this.props.user.attribute('likesReceived');
+        const likes = this.attrs.user.attribute('likesReceived');
 
         if (Number.isInteger(likes)) {
             items.add('likesReceived', m('span.UserCard-likesReceived', [

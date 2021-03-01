@@ -2,14 +2,11 @@
 
 namespace ClarkWinkelmann\LikesReceived\Access;
 
-use Flarum\User\AbstractPolicy;
 use Flarum\User\User;
 
-class UserPolicy extends AbstractPolicy
+class UserPolicy extends \Flarum\User\Access\UserPolicy
 {
-    protected $model = User::class;
-
-    public function viewLikesReceived(User $actor, User $user)
+    public function viewLikesReceived(User $actor, User $user): bool
     {
         return $actor->id === $user->id || $actor->hasPermission('clarkwinkelmann-likes-received.view');
     }

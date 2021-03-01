@@ -1,26 +1,21 @@
 <?php
 
+
 namespace ClarkWinkelmann\LikesReceived\Listeners;
+
 
 use Flarum\Likes\Event\PostWasLiked;
 use Flarum\Likes\Event\PostWasUnliked;
 use Flarum\Post\Post;
-use Illuminate\Contracts\Events\Dispatcher;
 
-class LikesCountUpdater
+class UpdateLikesCount
 {
-    public function subscribe(Dispatcher $events)
-    {
-        $events->listen(PostWasLiked::class, [$this, 'liked']);
-        $events->listen(PostWasUnliked::class, [$this, 'unliked']);
-    }
-
     protected function postCounts(Post $post)
     {
         return $post->user && $post->type === 'comment' && !$post->is_private;
     }
 
-    public function liked(PostWasLiked $event)
+    public function postWasLiked(PostWasLiked $event)
     {
         if (!$this->postCounts($event->post)) {
             return;
@@ -30,7 +25,7 @@ class LikesCountUpdater
         $event->post->user->save();
     }
 
-    public function unliked(PostWasUnliked $event)
+    public function handle(PostWasUnliked $event)
     {
         if (!$this->postCounts($event->post)) {
             return;

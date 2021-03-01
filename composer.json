@@ -8,7 +8,7 @@
     "type": "flarum-extension",
     "license": "MIT",
     "require": {
-        "flarum/core": ">=0.1.0-beta.13 <0.1.0-beta.14",
+        "flarum/core": ">=0.1.0-beta.16 <0.1.0-beta.17",
         "flarum/likes": "*"
     },
     "authors": [
@@ -26,6 +26,7 @@
     "extra": {
         "flarum-extension": {
             "title": "Likes Received",
+            "category": "feature",
             "icon": {
                 "name": "fas fa-thumbs-up",
                 "backgroundColor": "#684ba6",
