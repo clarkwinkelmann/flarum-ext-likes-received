@@ -7,7 +7,7 @@ import icon from 'flarum/helpers/icon';
 
 app.initializers.add('clarkwinkelmann-likes-received', () => {
     extend(UserCard.prototype, 'infoItems', function (items) {
-        const likes = this.props.user.attribute('likesReceived');
+        const likes = this.attrs.user.attribute('likesReceived');
 
         if (Number.isInteger(likes)) {
             items.add('likesReceived', m('span.UserCard-likesReceived', [

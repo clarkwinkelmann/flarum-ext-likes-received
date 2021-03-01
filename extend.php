@@ -2,8 +2,11 @@
 
 namespace ClarkWinkelmann\LikesReceived;
 
+use Flarum\Api\Serializer\UserSerializer;
 use Flarum\Extend;
-use Illuminate\Contracts\Events\Dispatcher;
+use Flarum\Likes\Event\PostWasLiked;
+use Flarum\Likes\Event\PostWasUnliked;
+use Flarum\User\User;
 
 return [
     (new Extend\Frontend('forum'))
@@ -17,9 +20,13 @@ return [
     (new Extend\Console())
         ->command(Commands\UpdateLikesReceivedCommand::class),
 
-    function (Dispatcher $events) {
-        $events->subscribe(Access\UserPolicy::class);
-        $events->subscribe(Listeners\LikesCountUpdater::class);
-        $events->subscribe(Listeners\UserAttributes::class);
-    },
+    (new Extend\Policy)
+        ->modelPolicy(User::class, Access\UserPolicy::class),
+
+    (new Extend\ApiSerializer(UserSerializer::class))
+        ->mutate(Listeners\AddLikesReceivedAttribute::class),
+
+    (new Extend\Event)
+        ->listen(PostWasLiked::class, Listeners\PostWasLikedListener::class)
+        ->listen(PostWasUnliked::class, Listeners\PostWasUnlikedListener::class)
 ];
