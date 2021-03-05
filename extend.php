@@ -27,6 +27,5 @@ return [
         ->mutate(Listeners\AddLikesReceivedAttribute::class),
 
     (new Extend\Event)
-        ->listen(PostWasLiked::class, Listeners\PostWasLikedListener::class)
-        ->listen(PostWasUnliked::class, Listeners\PostWasUnlikedListener::class)
+        ->listen(Listeners\LikesCountUpdater::class)
 ];
