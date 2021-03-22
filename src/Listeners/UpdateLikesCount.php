@@ -1,8 +1,6 @@
 <?php
 
-
 namespace ClarkWinkelmann\LikesReceived\Listeners;
-
 
 use Flarum\Likes\Event\PostWasLiked;
 use Flarum\Likes\Event\PostWasUnliked;
@@ -25,7 +23,7 @@ class UpdateLikesCount
         $event->post->user->save();
     }
 
-    public function handle(PostWasUnliked $event)
+    public function postWasUnliked(PostWasUnliked $event)
     {
         if (!$this->postCounts($event->post)) {
             return;

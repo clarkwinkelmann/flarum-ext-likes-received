@@ -2,9 +2,9 @@
 
 namespace ClarkWinkelmann\LikesReceived\Listeners;
 
-class AddLikesReceivedAttribute
+class UserAttributes
 {
-    public function __invoke($serializer, $user, $attributes)
+    public function __invoke($serializer, $user, $attributes): array
     {
         if ($serializer->getActor()->can('viewLikesReceived', $user)) {
             $attributes['likesReceived'] = $user->clarkwinkelmann_likes_received_count;

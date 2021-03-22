@@ -24,7 +24,7 @@ return [
         ->modelPolicy(User::class, Access\UserPolicy::class),
 
     (new Extend\ApiSerializer(UserSerializer::class))
-        ->attributes(Listeners\AddLikesReceivedAttribute::class),
+        ->attributes(Listeners\UserAttributes::class),
 
     (new Extend\Event)
         ->listen(PostWasLiked::class, [Listeners\UpdateLikesCount::class, 'postWasLiked'])

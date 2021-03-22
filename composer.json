@@ -15,9 +15,14 @@
         {
             "name": "Clark Winkelmann",
             "email": "clark.winkelmann@gmail.com",
+            "homepage": "https://clarkwinkelmann.com/",
             "role": "Developer"
         }
     ],
+    "support": {
+        "source": "https://github.com/clarkwinkelmann/flarum-ext-likes-received",
+        "forum": "https://discuss.flarum.org/d/24489"
+    },
     "autoload": {
         "psr-4": {
             "ClarkWinkelmann\\LikesReceived\\": "src/"
