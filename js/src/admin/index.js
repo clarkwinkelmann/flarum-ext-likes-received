@@ -1,4 +1,4 @@
-import app from 'flarum/app';
+import app from 'flarum/admin/app';
 
 app.initializers.add('clarkwinkelmann-likes-received', () => {
     app.extensionData.for('clarkwinkelmann-likes-received')

@@ -1,5 +1,5 @@
 import {extend} from 'flarum/common/extend';
-import app from 'flarum/app';
+import app from 'flarum/forum/app';
 import UserCard from 'flarum/forum/components/UserCard';
 import icon from 'flarum/common/helpers/icon';
 
@@ -14,7 +14,7 @@ app.initializers.add('clarkwinkelmann-likes-received', () => {
                 icon('far fa-thumbs-up'),
                 ' ',
                 app.translator.trans('clarkwinkelmann-likes-received.forum.user-card.likes', {
-                    likes: likes + '', // Cast to string to show zero
+                    likes,
                 }),
             ]));
         }
