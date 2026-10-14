@@ -8,12 +8,12 @@ use Flarum\Post\Post;
 
 class UpdateLikesCount
 {
-    protected function postCounts(Post $post)
+    protected function postCounts(Post $post): bool
     {
         return $post->user && $post->type === 'comment' && !$post->is_private;
     }
 
-    public function postWasLiked(PostWasLiked $event)
+    public function postWasLiked(PostWasLiked $event): void
     {
         if (!$this->postCounts($event->post)) {
             return;
@@ -23,13 +23,13 @@ class UpdateLikesCount
         $event->post->user->save();
     }
 
-    public function postWasUnliked(PostWasUnliked $event)
+    public function postWasUnliked(PostWasUnliked $event): void
     {
         if (!$this->postCounts($event->post)) {
             return;
         }
 
-        // Substract one like but don't go below zero
+        // Subtract one like but don't go below zero
         $event->post->user->clarkwinkelmann_likes_received_count = max($event->post->user->clarkwinkelmann_likes_received_count - 1, 0);
         $event->post->user->save();
     }

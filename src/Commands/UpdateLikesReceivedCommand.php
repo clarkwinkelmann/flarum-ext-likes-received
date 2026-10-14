@@ -12,7 +12,7 @@ class UpdateLikesReceivedCommand extends Command
     protected $signature = 'clarkwinkelmann:likes-received:refresh';
     protected $description = 'Re-computes the total number of likes received for each user';
 
-    public function handle()
+    public function handle(): void
     {
         $progress = $this->output->createProgressBar(User::query()->count());
 

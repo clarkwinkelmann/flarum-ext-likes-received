@@ -8,7 +8,7 @@
     "type": "flarum-extension",
     "license": "MIT",
     "require": {
-        "flarum/core": "^1.2",
+        "flarum/core": "^2.0.1",
         "flarum/likes": "*"
     },
     "authors": [
@@ -37,9 +37,6 @@
                 "backgroundColor": "#684ba6",
                 "color": "#fff"
             }
-        },
-        "flagrow": {
-            "discuss": "https://discuss.flarum.org/d/24489"
         }
     }
 }

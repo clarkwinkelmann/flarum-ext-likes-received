@@ -2,7 +2,7 @@
 
 namespace ClarkWinkelmann\LikesReceived;
 
-use Flarum\Api\Serializer\UserSerializer;
+use Flarum\Api\Resource;
 use Flarum\Extend;
 use Flarum\Likes\Event\PostWasLiked;
 use Flarum\Likes\Event\PostWasUnliked;
@@ -23,8 +23,8 @@ return [
     (new Extend\Policy)
         ->modelPolicy(User::class, Access\UserPolicy::class),
 
-    (new Extend\ApiSerializer(UserSerializer::class))
-        ->attributes(Listeners\UserAttributes::class),
+    (new Extend\ApiResource(Resource\UserResource::class))
+        ->fields(Api\UserResourceFields::class),
 
     (new Extend\Event)
         ->listen(PostWasLiked::class, [Listeners\UpdateLikesCount::class, 'postWasLiked'])
